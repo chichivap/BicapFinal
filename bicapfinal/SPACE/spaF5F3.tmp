@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy5mf1vp21lsh"]
+
+[ext_resource type="PackedScene" uid="uid://dd0xh831te6k5" path="res://SPACE/Ship/ship.tscn" id="1_1g2ep"]
+[ext_resource type="Script" path="res://SPACE/space.gd" id="1_w3a4k"]
+[ext_resource type="PackedScene" uid="uid://3a7wario58xt" path="res://SPACE/Parallax/parallax_background.tscn" id="2_nnous"]
+[ext_resource type="FontFile" uid="uid://derq5q5fye01p" path="res://determination2.ttf" id="5_3ltt7"]
+[ext_resource type="PackedScene" uid="uid://c7cogkrrigq0e" path="res://SPACE/asteroid_generator.tscn" id="6_cmt4d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogfdv"]
+line_spacing = 4.0
+font = ExtResource("5_3ltt7")
+font_size = 8
+
+[node name="Space" type="Node2D"]
+script = ExtResource("1_w3a4k")
+
+[node name="Ship" parent="." instance=ExtResource("1_1g2ep")]
+position = Vector2(161, 159)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_nnous")]
+
+[node name="Command2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 225.0
+offset_top = 138.0
+offset_right = 318.0
+offset_bottom = 180.0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Command2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0431373, 0.0901961, 1)
+
+[node name="Label" type="Label" parent="Command2"]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 89.0
+offset_bottom = 35.0
+label_settings = SubResource("LabelSettings_ogfdv")
+
+[node name="AsteroidGenerator" parent="." instance=ExtResource("6_cmt4d")]
+
+[node name="FirstQuestionTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="SecondQuestionTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true

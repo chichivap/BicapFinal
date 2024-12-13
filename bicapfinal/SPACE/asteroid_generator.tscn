@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7cogkrrigq0e"]
+
+[ext_resource type="Script" path="res://SPACE/asteroid_generator.gd" id="1_d851b"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="1_pxils"]
+[ext_resource type="PackedScene" uid="uid://cakmrhg80agvh" path="res://SPACE/Asteroids/false_asteroid.tscn" id="2_qvoi8"]
+[ext_resource type="PackedScene" uid="uid://bsfdtbu3amv53" path="res://SPACE/Asteroids/true_asteroid.tscn" id="3_hpm43"]
+[ext_resource type="PackedScene" uid="uid://dn3qrpdbfjqae" path="res://SPACE/Asteroids/remove_asteroid.tscn" id="4_6xf03"]
+[ext_resource type="PackedScene" uid="uid://bo3xt4nokbyem" path="res://SPACE/Asteroids/append_asteroid.tscn" id="5_db03j"]
+
+[node name="AsteroidGenerator" type="Node2D"]
+script = ExtResource("1_d851b")
+FirstAsteroid = ExtResource("2_qvoi8")
+SecondAsteroid = ExtResource("3_hpm43")
+RemoveAsteroid = ExtResource("4_6xf03")
+AppendAsteroid = ExtResource("5_db03j")
+
+[node name="FalseSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("1_pxils")
+
+[node name="TrueSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("1_pxils")
+
+[node name="FirstTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="SecondTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="ThirdTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[node name="FourthTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[node name="RemoveSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("1_pxils")
+
+[node name="AppendSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("1_pxils")
+
+[node name="FifthTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="SixthTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true

@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://btjem4tg0j8gq"]
+
+[ext_resource type="PackedScene" uid="uid://dcydthb7n6wl8" path="res://tile_map.tscn" id="1_16sy6"]
+[ext_resource type="Script" path="res://Environments/rokcet_in_a_building.gd" id="1_xl8go"]
+[ext_resource type="PackedScene" uid="uid://bd01vh8811o47" path="res://Player/player_character.tscn" id="2_8isqc"]
+[ext_resource type="PackedScene" uid="uid://d04e16iiy0jky" path="res://Environments/rocket.tscn" id="3_ne5w4"]
+[ext_resource type="PackedScene" uid="uid://r4gybws8uneq" path="res://NPC's/rocket_bot.tscn" id="4_bt7y1"]
+[ext_resource type="Script" path="res://Environments/exit_detection.gd" id="5_woa4c"]
+[ext_resource type="Script" path="res://Environments/rocket_detection.gd" id="6_q0sto"]
+[ext_resource type="AudioStream" uid="uid://dwqbibpfp2s24" path="res://Sounds/spaceship-70995.mp3" id="8_0tt4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxqbh"]
+size = Vector2(64, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2mgj"]
+size = Vector2(97, 59)
+
+[node name="RocketInABuilding" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_xl8go")
+
+[node name="TileMap" parent="." instance=ExtResource("1_16sy6")]
+layer_0/tile_data = PackedInt32Array(262147, 131072, 2, 327683, 131072, 2, 393219, 131072, 2, 458755, 131072, 2, 524291, 131072, 2, 262148, 131072, 2, 327684, 131072, 2, 393220, 131072, 2, 458756, 131072, 2, 524292, 131072, 2, 262149, 131072, 2, 327685, 131072, 2, 393221, 131072, 2, 458757, 131072, 2, 524293, 131072, 2, 262150, 131072, 2, 327686, 131072, 2, 393222, 131072, 2, 458758, 131072, 2, 524294, 131072, 2, 262151, 131072, 2, 327687, 131072, 2, 393223, 131072, 2, 458759, 131072, 2, 524295, 131072, 2, 262152, 131072, 2, 327688, 131072, 2, 393224, 131072, 2, 458760, 131072, 2, 524296, 131072, 2, 262153, 131072, 2, 327689, 131072, 2, 393225, 131072, 2, 458761, 131072, 2, 524297, 131072, 2, 262154, 131072, 2, 327690, 131072, 2, 393226, 131072, 2, 458762, 131072, 2, 524298, 131072, 2, 262155, 131072, 2, 327691, 131072, 2, 393227, 131072, 2, 458763, 131072, 2, 524299, 131072, 2, 262156, 131072, 2, 327692, 131072, 2, 393228, 131072, 2, 458764, 131072, 2, 524300, 131072, 2, 262157, 131072, 2, 327693, 131072, 2, 393229, 131072, 2, 458765, 131072, 2, 524301, 131072, 2, 262158, 131072, 2, 327694, 131072, 2, 393230, 131072, 2, 458766, 131072, 2, 524302, 131072, 2, 262159, 131072, 2, 327695, 131072, 2, 393231, 131072, 2, 458767, 131072, 2, 524303, 131072, 2, 262160, 131072, 2, 327696, 131072, 2, 393232, 131072, 2, 458768, 131072, 2, 524304, 131072, 2, 589832, 131072, 2, 589833, 131072, 2, 589834, 131072, 2, 589835, 131072, 2, 655371, 131072, 2, 720907, 131072, 2, 720906, 131072, 2, 720905, 131072, 2, 655369, 131072, 2, 655368, 131072, 2, 655370, 131072, 2, 720904, 131072, 2)
+layer_1/tile_data = PackedInt32Array(3, 65536, 1, 65539, 393216, 0, 131075, 65536, 1, 196611, 65536, 1, 4, 65536, 1, 65540, 65536, 1, 131076, 65536, 1, 196612, 720896, 0, 5, 65536, 1, 65541, 65536, 1, 131077, 65536, 1, 196613, 65536, 1, 6, 65536, 1, 65542, 65536, 1, 131078, 65536, 1, 196614, 65536, 1, 7, 65536, 1, 65543, 458752, 0, 131079, 65536, 1, 196615, 65536, 1, 8, 65536, 1, 65544, 65536, 1, 131080, 65536, 1, 196616, 65536, 1, 9, 65536, 1, 65545, 65536, 1, 10, 65536, 1, 65546, 65536, 1, 11, 65536, 1, 65547, 65536, 1, 131083, 65536, 1, 196619, 65536, 1, 12, 65536, 1, 65548, 458752, 0, 131084, 65536, 1, 196620, 65536, 1, 13, 65536, 1, 65549, 65536, 1, 131085, 65536, 1, 196621, 720896, 0, 14, 65536, 1, 65550, 65536, 1, 131086, 65536, 1, 196622, 65536, 1, 131081, 65536, 1, 196617, 65536, 1, 131082, 65536, 1, 196618, 65536, 1, 15, 65536, 1, 65551, 65536, 1, 131087, 65536, 1, 196623, 65536, 1, 16, 65536, 1, 65552, 65536, 1, 131088, 393216, 0, 196624, 65536, 1, 17, 196608, 2, 65553, 196608, 2, 131089, 196608, 2, 196625, 196608, 2, 262161, 196608, 2, 327697, 196608, 2, 393233, 196608, 2, 458769, 196608, 2, 524305, 196608, 2, 18, 0, 7, 65554, 0, 7, 131090, 0, 7, 196626, 0, 7, 262162, 0, 7, 327698, 0, 7, 393234, 0, 7, 458770, 0, 7, 524306, 0, 7, 19, 0, 7, 65555, 0, 7, 131091, 0, 7, 196627, 0, 7, 262163, 0, 7, 327699, 0, 7, 393235, 0, 7, 458771, 0, 7, 524307, 0, 7, 589841, 196608, 3, 655377, 0, 7, 589842, 0, 7, 655378, 0, 7, 589843, 0, 7, 655379, 0, 7, 589824, 0, 7, 655360, 0, 7, 589825, 0, 7, 655361, 0, 7, 589826, 0, 3, 655362, 0, 7, 589827, 65536, 3, 655363, 0, 7, 589828, 65536, 3, 655364, 0, 7, 589829, 65536, 3, 655365, 0, 7, 589830, 65536, 3, 655366, 0, 7, 589831, 327680, 3, 655367, 0, 1, 589836, 262144, 3, 655372, 196608, 2, 589837, 65536, 3, 655373, 0, 7, 589838, 65536, 3, 655374, 0, 7, 589839, 65536, 3, 655375, 0, 7, 589840, 65536, 3, 655376, 0, 7, 720896, 0, 7, 720897, 0, 7, 720898, 0, 7, 720899, 0, 7, 720900, 0, 7, 720901, 0, 7, 720902, 0, 7, 720903, 0, 1, 720908, 196608, 2, 720909, 0, 7, 720910, 0, 7, 720911, 0, 7, 720912, 0, 7, 720913, 0, 7, 720914, 0, 7, 720915, 0, 7, 0, 0, 7, 65536, 0, 7, 131072, 0, 7, 196608, 0, 7, 262144, 0, 7, 327680, 0, 7, 393216, 0, 7, 458752, 0, 7, 524288, 0, 7, 1, 0, 7, 65537, 0, 7, 131073, 0, 7, 196609, 0, 7, 262145, 0, 7, 327681, 0, 7, 393217, 0, 7, 458753, 0, 7, 524289, 0, 7, 2, 0, 1, 65538, 0, 1, 131074, 0, 1, 196610, 0, 1, 262146, 0, 1, 327682, 0, 1, 458754, 0, 1, 524290, 0, 1, 393218, 0, 1, 458767, 458752, 3, 327692, 589824, 3)
+layer_2/tile_data = PackedInt32Array(4, 524288, 4, 5, 589824, 4, 6, 655360, 4, 16, 655360, 4, 15, 589824, 4, 14, 524288, 4)
+
+[node name="Rocket" parent="." instance=ExtResource("3_ne5w4")]
+position = Vector2(162, 97)
+scale = Vector2(2, 2)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_8isqc")]
+position = Vector2(159, 140)
+
+[node name="RocketBot" parent="." instance=ExtResource("4_bt7y1")]
+position = Vector2(231, 106)
+
+[node name="ExitDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_woa4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDetection"]
+position = Vector2(160, 177)
+shape = SubResource("RectangleShape2D_gxqbh")
+
+[node name="RocketDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("6_q0sto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RocketDetection"]
+position = Vector2(148.5, 112.5)
+shape = SubResource("RectangleShape2D_j2mgj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0tt4t")
+
+[connection signal="body_entered" from="ExitDetection" to="ExitDetection" method="_on_body_entered"]
+[connection signal="body_exited" from="ExitDetection" to="ExitDetection" method="_on_body_exited"]
+[connection signal="body_entered" from="RocketDetection" to="RocketDetection" method="_on_body_entered"]
+[connection signal="body_exited" from="RocketDetection" to="RocketDetection" method="_on_body_exited"]

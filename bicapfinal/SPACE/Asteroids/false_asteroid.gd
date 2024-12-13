@@ -1,0 +1,21 @@
+extends Node2D
+
+@onready var move_component: MoveComponent = $MoveComponent
+@onready var stats_component: StatsComponent = $StatsComponent
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var scale_component: ScaleComponent = $ScaleComponent
+@onready var flash_component: FlashComponent = $FlashComponent
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var destroyed_component: DestroyedComponent = $DestroyedComponent
+@onready var score_component: ScoreComponent = $ScoreComponent
+
+func _ready() -> void:
+	
+	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
+	visible_on_screen_notifier_2d.screen_exited.connect(game_over)
+	stats_component.no_health.connect(queue_free)
+	hitbox_component.hit_hurtbox.connect(destroyed_component.destroy.unbind(1)) 
+	
+func game_over():
+	PlayerPos.mistake = true

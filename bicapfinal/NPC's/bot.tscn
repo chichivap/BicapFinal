@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhf8b506e0bii"]
+
+[ext_resource type="Script" path="res://NPC's/bot.gd" id="1_dhjah"]
+[ext_resource type="Texture2D" uid="uid://cqg1pwwjj6cg1" path="res://botNPC.png" id="2_f6kmw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eesqa"]
+atlas = ExtResource("2_f6kmw")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyttu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eesqa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7y06w"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bek0s"]
+radius = 19.0
+
+[node name="Bot" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_dhjah")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_kyttu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7y06w")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_bek0s")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

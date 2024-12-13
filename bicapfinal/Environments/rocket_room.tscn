@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8o7o5m1k6axb"]
+
+[ext_resource type="Texture2D" uid="uid://bld34djkv6wl" path="res://assets/CosmicLilac_Tiles-export.png" id="1_irsrp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qmc2s"]
+texture = ExtResource("1_irsrp")
+
+[sub_resource type="TileSet" id="TileSet_u4tow"]
+sources/0 = SubResource("TileSetAtlasSource_qmc2s")
+
+[node name="RocketRoom" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_u4tow")
+format = 2

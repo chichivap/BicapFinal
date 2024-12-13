@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceq77yg3doe1x"]
+
+[ext_resource type="Script" path="res://Environments/stairRoom.gd" id="1_p66q5"]
+
+[node name="Stair" type="Node2D"]
+visible = false
+script = ExtResource("1_p66q5")
+
+[node name="DetectionArea" type="Area2D" parent="."]

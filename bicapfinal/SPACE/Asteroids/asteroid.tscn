@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5rp0mpjmtdh2"]
+
+[ext_resource type="Script" path="res://SPACE/Asteroids/asteroid.gd" id="1_2lwev"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="2_7mjca"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="3_e5l06"]
+[ext_resource type="Script" path="res://components/destroyed_component.gd" id="4_xgfcb"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="5_y2ak6"]
+[ext_resource type="PackedScene" uid="uid://c78ftvs5tl87g" path="res://SPACE/explosion_effect.tscn" id="6_1e5hm"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="7_w1itx"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="7_xrpt7"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="8_ys5fn"]
+
+[node name="Asteroid" type="Node2D"]
+script = ExtResource("1_2lwev")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("7_w1itx")
+velocity = Vector2(0, 40)
+actor = NodePath("..")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_7mjca")
+health = 3
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ScaleComponent" type="Node" parent="."]
+script = ExtResource("8_ys5fn")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("7_xrpt7")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("4_xgfcb")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../SpawnerComponent")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("5_y2ak6")
+scene = ExtResource("6_1e5hm")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_e5l06")

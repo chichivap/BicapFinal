@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://cakmrhg80agvh"]
+
+[ext_resource type="PackedScene" uid="uid://c5rp0mpjmtdh2" path="res://SPACE/Asteroids/asteroid.tscn" id="1_2t1lf"]
+[ext_resource type="Texture2D" uid="uid://gh8q647x83tt" path="res://assets/FalseAsteroid.png" id="2_nj4cn"]
+[ext_resource type="Script" path="res://SPACE/Asteroids/false_asteroid.gd" id="2_qtpe1"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="3_qf2j4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5giu"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2adat"]
+radius = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w1oi"]
+atlas = ExtResource("2_nj4cn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b82x0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w1oi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FalseAsteroid" instance=ExtResource("1_2t1lf")]
+script = ExtResource("2_qtpe1")
+
+[node name="ScaleComponent" parent="." index="3" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_v5giu")
+
+[node name="HurtComponent" type="Node" parent="." index="7" node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("3_qf2j4")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_2adat")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="9"]
+sprite_frames = SubResource("SpriteFrames_b82x0")

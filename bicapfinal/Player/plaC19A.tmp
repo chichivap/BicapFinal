@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt0bkeb3lav3c"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_3doce"]
+[ext_resource type="Texture2D" uid="uid://dvcksjcw0mmlt" path="res://assets/astrounat.png" id="1_hkmxl"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_2e1t7"]
+[ext_resource type="Script" path="res://components/move_input_component.gd" id="3_xnr23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbdjg"]
+atlas = ExtResource("1_hkmxl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5j1u5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbdjg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_3doce")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5j1u5")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("2_2e1t7")
+actor = NodePath("..")
+
+[node name="MoveInputComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
+script = ExtResource("3_xnr23")
+move_component = NodePath("../MoveComponent")

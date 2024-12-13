@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyeu6xsgi12vr"]
+
+[ext_resource type="PackedScene" uid="uid://dhf8b506e0bii" path="res://NPC's/bot.tscn" id="1_1qfek"]
+
+[node name="ServiceCenterBot" instance=ExtResource("1_1qfek")]
